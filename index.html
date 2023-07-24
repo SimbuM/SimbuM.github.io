@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Booking</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Movie Booking</h1>
+        <div class="movie-list">
+            <div class="movie-card">
+                <img src="images/download.jpg" alt="Movie 1">
+                <h3>Leo</h3>
+            </div>
+            <div class="movie-card">
+                <img src="images/vik.jpg" alt="Movie 2">
+                <h3>Vikram</h3>
+            </div>
+            <div class="movie-card">
+                <img src="images/kaithi.jpg" alt="Movie 3">
+                <h3>kaithi</h3>
+            </div>
+            <!-- Add more movie cards as needed -->
+        </div>
+        <form>
+            <div class="input-group">
+                <label for="movie">Select Movie:</label>
+                <select id="movie" name="movie" required>
+                    <option value="" disabled selected>Select a movie</option>
+                    <option value="movie1">Leo</option>
+                    <option value="movie2">Vikram</option>
+                    <option value="movie3">Kaithi</option>
+                    <!-- Add more movie options as needed -->
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label for="date">Select Date:</label>
+                <input type="date" id="date" name="date" required>
+            </div>
+
+            <div class="input-group">
+                <label for="time">Select Time:</label>
+                <input type="time" id="time" name="time" required>
+            </div>
+
+            <div class="input-group">
+                <label for="seats">Select Number of Seats:</label>
+                <input type="number" id="seats" name="seats" min="1" required>
+            </div>
+
+            <!-- Custom-styled submit button -->
+            <div class="submit-button">
+                <input type="submit" value="Book Now">
+            </div>
+        </form>
+    </div>
+</body>
+</html>
