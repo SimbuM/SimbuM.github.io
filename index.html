@@ -1,61 +1,237 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movie Booking</title>
-    <link rel="stylesheet" href="style.css">
+  <title>Fullstack Task</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 3.4;
+      margin: 0;
+      padding: 1px;
+      background-color: #18a39c; /* Background color for the full page */
+      background-image: url('');
+      background-repeat: no-repeat;
+    }
+
+    h1 {
+      color: #0066cc;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    h1:hover {
+      color: #ff6600;
+    }
+
+    .calculator {
+      display: flex;
+      align-items: center;
+    }
+
+    .calculator input[type="number"] {
+      padding: 4px;
+      margin-right: 2px;
+    }
+
+    .calculator button {
+      padding: 8px 15px;
+      margin-right: 10px;
+      cursor: pointer;
+      background-color: #0066cc;
+      color: #ffffff;
+      border: none;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+
+    .calculator button:hover {
+      background-color: #ff6600;
+    }
+
+    #result {
+      font-size: 18px;
+      margin-top: 10px;
+    }
+
+    h2 {
+      color: #0066cc;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      margin-bottom: 5px;
+      display: flex;
+      align-items: center;
+      animation: fadeIn 0.5s ease;
+      transition: background-color 0.3s ease;
+      padding: 5px;
+    }
+
+    li:hover {
+      background-color: #f0f0f0;
+    }
+
+    li input[type="checkbox"] {
+      margin-right: 5px;
+    }
+
+    li button {
+      padding: 4px 8px;
+      cursor: pointer;
+      background-color: #cc0000;
+      color: #000000;
+      border: none;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+      margin-left: 5px;
+    }
+
+    li button:hover {
+      background-color: #ff3300;
+    }
+
+    .add-item {
+      display: flex;
+      align-items: center;
+    }
+
+    .add-item input[type="text"] {
+      padding: 8px;
+      margin-right: 10px;
+      flex: 1;
+    }
+
+    .add-item button {
+      padding: 8px 15px;
+      cursor: pointer;
+      background-color: #009900;
+      color: #0f0f0f;
+      border: none;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+
+    .add-item button:hover {
+      background-color: #00cc00;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Movie Booking</h1>
-        <div class="movie-list">
-            <div class="movie-card">
-                <img src="images/download.jpg" alt="Movie 1">
-                <h3>Leo</h3>
-            </div>
-            <div class="movie-card">
-                <img src="images/vik.jpg" alt="Movie 2">
-                <h3>Vikram</h3>
-            </div>
-            <div class="movie-card">
-                <img src="images/kaithi.jpg" alt="Movie 3">
-                <h3>kaithi</h3>
-            </div>
-            <!-- Add more movie cards as needed -->
-        </div>
-        <form>
-            <div class="input-group">
-                <label for="movie">Select Movie:</label>
-                <select id="movie" name="movie" required>
-                    <option value="" disabled selected>Select a movie</option>
-                    <option value="movie1">Leo</option>
-                    <option value="movie2">Vikram</option>
-                    <option value="movie3">Kaithi</option>
-                    <!-- Add more movie options as needed -->
-                </select>
-            </div>
-
-            <div class="input-group">
-                <label for="date">Select Date:</label>
-                <input type="date" id="date" name="date" required>
-            </div>
-
-            <div class="input-group">
-                <label for="time">Select Time:</label>
-                <input type="time" id="time" name="time" required>
-            </div>
-
-            <div class="input-group">
-                <label for="seats">Select Number of Seats:</label>
-                <input type="number" id="seats" name="seats" min="1" required>
-            </div>
-
-            <!-- Custom-styled submit button -->
-            <div class="submit-button">
-                <input type="submit" value="Book Now">
-            </div>
-        </form>
+  <div class="container">
+    <h1 id="colorChange" onclick="changeColor()">Click To Change My Color</h1>
+    <div class="calculator">
+      <input type="number" id="number1" placeholder="Enter Number 1">
+      <input type="number" id="number2" placeholder="Enter Number 2">
+      <button onclick="calculateSum()">Add</button>
+      <button onclick="calculateDifference()">Sub</button>
+      <button onclick="calculateProduct()">Mul</button>
+      <button onclick="calculateDivision()">Div</button>
     </div>
+    <p id="result">Result: <span id="resultValue">-</span></p>
+    <h2>TODO LIST</h2>
+    <ul id="TODO_LIST">
+      <li>
+        <input type="checkbox">
+        <span>Sample 1</span>
+        <button onclick="removeItem(0)">Remove</button>
+      </li>
+      <li>
+        <input type="checkbox">
+        <span>Sample 2</span>
+        <button onclick="removeItem(1)">Remove</button>
+      </li>
+    </ul>
+    <div class="add-item">
+      <input type="text" id="newItem" placeholder="Enter New Item">
+      <button onclick="addItem()">Add Item</button>
+    </div>
+  </div>
+
+  <script>
+    function changeColor() {
+      const element = document.getElementById("colorChange");
+      const randomColor = '#' + Math.floor(Math.random()*16777215).toString(16);
+      element.style.color = randomColor;
+      element.classList.add("highlight");
+      setTimeout(() => {
+        element.classList.remove("highlight");
+      }, 1000);
+    }
+
+    function calculateSum() {
+      const num1 = parseFloat(document.getElementById("number1").value);
+      const num2 = parseFloat(document.getElementById("number2").value);
+      const result = num1 + num2;
+      document.getElementById("resultValue").innerText = result;
+    }
+
+    function calculateDifference() {
+      const num1 = parseFloat(document.getElementById("number1").value);
+      const num2 = parseFloat(document.getElementById("number2").value);
+      const result = num1 - num2;
+      document.getElementById("resultValue").innerText = result;
+    }
+
+    function calculateProduct() {
+      const num1 = parseFloat(document.getElementById("number1").value);
+      const num2 = parseFloat(document.getElementById("number2").value);
+      const result = num1 * num2;
+      document.getElementById("resultValue").innerText = result;
+    }
+
+    function calculateDivision() {
+      const num1 = parseFloat(document.getElementById("number1").value);
+      const num2 = parseFloat(document.getElementById("number2").value);
+      if (num2 !== 0) {
+        const result = num1 / num2;
+        document.getElementById("resultValue").innerText = result;
+      } else {
+        document.getElementById("resultValue").innerText = "Cannot divide by zero";
+      }
+    }
+
+    function addItem() {
+      const newItemText = document.getElementById("newItem").value;
+      if (newItemText.trim() !== "") {
+        const checklist = document.getElementById("TODO_LIST");
+        const newItem = document.createElement("li");
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        newItem.appendChild(checkbox);
+        newItem.innerHTML += `<span>${newItemText}</span>`;
+        const removeButton = document.createElement("button");
+        removeButton.innerText = "Remove";
+        removeButton.onclick = function() {
+          const index = Array.from(checklist.children).indexOf(newItem);
+          removeItem(index);
+        };
+        newItem.appendChild(removeButton);
+        checklist.appendChild(newItem);
+        document.getElementById("newItem").value = "";
+        newItem.classList.add("highlight");
+        setTimeout(() => {
+          newItem.classList.remove("highlight");
+        }, 1000);
+      }
+    }
+
+    function removeItem(index) {
+      const checklist = document.getElementById("TODO_LIST");
+      checklist.removeChild(checklist.children[index]);
+    }
+  </script>
 </body>
 </html>
